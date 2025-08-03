@@ -18,6 +18,11 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				pirata: ['Pirata One', 'cursive'],
+				bangers: ['Bangers', 'cursive'],
+				cinzel: ['Cinzel', 'serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -61,7 +66,17 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// One Piece themed colors
+				gold: 'hsl(var(--gold))',
+				'gold-dark': 'hsl(var(--gold-dark))',
+				treasure: 'hsl(var(--treasure))',
+				'ocean-deep': 'hsl(var(--ocean-deep))',
+				'ocean-light': 'hsl(var(--ocean-light))',
+				'ocean-foam': 'hsl(var(--ocean-foam))',
+				'wood-dark': 'hsl(var(--wood-dark))',
+				'wood-medium': 'hsl(var(--wood-medium))',
+				'wood-light': 'hsl(var(--wood-light))',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

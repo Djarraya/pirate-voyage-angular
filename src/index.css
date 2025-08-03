@@ -2,57 +2,82 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* One Piece-inspired design system. All colors, gradients, fonts, etc defined here. 
 All colors MUST be HSL.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* One Piece Color Palette */
+    --background: 45 25% 92%; /* Parchment background */
+    --foreground: 25 45% 15%; /* Dark wood text */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 42 35% 88%; /* Light parchment cards */
+    --card-foreground: 25 45% 15%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 42 35% 88%;
+    --popover-foreground: 25 45% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 210 85% 25%; /* Deep sea blue */
+    --primary-foreground: 45 90% 95%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 35 45% 35%; /* Weathered wood brown */
+    --secondary-foreground: 45 90% 95%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 40 20% 82%; /* Muted parchment */
+    --muted-foreground: 25 35% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 350 85% 55%; /* Crimson red */
+    --accent-foreground: 45 90% 95%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 45 90% 95%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 35 25% 75%; /* Subtle wood border */
+    --input: 42 25% 85%;
+    --ring: 210 85% 35%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 98%;
+    /* Pirate Gold Theme */
+    --gold: 48 95% 65%; /* Pirate gold */
+    --gold-dark: 42 85% 45%; /* Dark gold */
+    --treasure: 55 85% 70%; /* Treasure yellow */
+    
+    /* Ocean Theme */
+    --ocean-deep: 210 85% 25%;
+    --ocean-light: 200 75% 45%;
+    --ocean-foam: 180 45% 85%;
+    
+    /* Wood Theme */
+    --wood-dark: 25 45% 25%;
+    --wood-medium: 35 35% 35%;
+    --wood-light: 40 25% 55%;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+    /* Sidebar - Ship Interior Theme */
+    --sidebar-background: 35 35% 25%; /* Dark ship wood */
+    --sidebar-foreground: 45 85% 85%;
+    --sidebar-primary: 48 95% 65%; /* Gold accents */
+    --sidebar-primary-foreground: 25 45% 15%;
+    --sidebar-accent: 35 45% 35%; /* Medium wood */
+    --sidebar-accent-foreground: 45 85% 85%;
+    --sidebar-border: 25 25% 45%;
+    --sidebar-ring: 48 95% 65%;
 
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Gradients */
+    --gradient-ocean: linear-gradient(135deg, hsl(210 85% 25%), hsl(200 75% 45%));
+    --gradient-treasure: linear-gradient(135deg, hsl(48 95% 65%), hsl(55 85% 70%));
+    --gradient-parchment: linear-gradient(135deg, hsl(45 25% 92%), hsl(42 35% 88%));
+    --gradient-wood: linear-gradient(135deg, hsl(35 45% 35%), hsl(25 45% 25%));
+    
+    /* Shadows */
+    --shadow-treasure: 0 10px 30px -10px hsl(48 95% 65% / 0.4);
+    --shadow-ocean: 0 10px 30px -10px hsl(210 85% 25% / 0.3);
+    --shadow-deep: 0 25px 50px -15px hsl(25 45% 15% / 0.4);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
 
   .dark {
@@ -100,6 +125,85 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-cinzel;
+    background-image: 
+      radial-gradient(circle at 25% 25%, hsl(45 25% 95% / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, hsl(42 35% 90% / 0.1) 0%, transparent 50%);
+  }
+}
+
+@layer components {
+  /* Pirate-themed utility classes */
+  .text-pirate {
+    @apply font-pirata text-accent;
+  }
+  
+  .text-treasure {
+    color: hsl(var(--gold));
+  }
+  
+  .bg-treasure {
+    background: var(--gradient-treasure);
+  }
+  
+  .bg-ocean {
+    background: var(--gradient-ocean);
+  }
+  
+  .bg-parchment {
+    background: var(--gradient-parchment);
+  }
+  
+  .bg-wood {
+    background: var(--gradient-wood);
+  }
+  
+  .shadow-treasure {
+    box-shadow: var(--shadow-treasure);
+  }
+  
+  .shadow-ocean {
+    box-shadow: var(--shadow-ocean);
+  }
+  
+  .shadow-deep {
+    box-shadow: var(--shadow-deep);
+  }
+  
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+  
+  .transition-bounce {
+    transition: var(--transition-bounce);
+  }
+  
+  /* Wood texture effect */
+  .wood-texture {
+    background-image: 
+      linear-gradient(90deg, hsl(var(--wood-medium)) 0%, hsl(var(--wood-dark)) 50%, hsl(var(--wood-medium)) 100%),
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        hsl(var(--wood-dark) / 0.1) 2px,
+        hsl(var(--wood-dark) / 0.1) 4px
+      );
+  }
+  
+  /* Rope border effect */
+  .rope-border {
+    border: 3px solid hsl(var(--wood-medium));
+    border-radius: 8px;
+    position: relative;
+  }
+  
+  .rope-border::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border: 3px dashed hsl(var(--wood-light));
+    border-radius: 12px;
+    opacity: 0.6;
   }
 }
