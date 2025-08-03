@@ -34,6 +34,7 @@ const navigationItems = [
 const adventureItems = [
   { title: "World Map", url: "/map", icon: Map },
   { title: "Ship", url: "/ship", icon: Ship },
+  { title: "Reports", url: "/reports", icon: MessageSquare },
 ];
 
 const systemItems = [

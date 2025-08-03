@@ -13,9 +13,12 @@ import {
   Target
 } from "lucide-react";
 import worldMapImage from "@/assets/world-map.jpg";
+import SendTroopsModal from "@/components/SendTroopsModal";
 
 const Map = () => {
   const [selectedIsland, setSelectedIsland] = useState<string | null>(null);
+  const [sendTroopsModalOpen, setSendTroopsModalOpen] = useState(false);
+  const [troopsTarget, setTroopsTarget] = useState<any>(null);
 
   const islands = [
     {
@@ -92,6 +95,11 @@ const Map = () => {
       case "Mystery": return Eye;
       default: return MapPin;
     }
+  };
+
+  const handleSendTroops = (island: any) => {
+    setTroopsTarget(island);
+    setSendTroopsModalOpen(true);
   };
 
   return (
@@ -226,6 +234,13 @@ const Map = () => {
                         <MapPin className="h-4 w-4 mr-2" />
                         Set Course
                       </Button>
+                      <Button 
+                        onClick={() => handleSendTroops(island)}
+                        className="w-full bg-treasure text-wood-dark hover:bg-gold transition-bounce"
+                      >
+                        <Target className="h-4 w-4 mr-2" />
+                        Send Troops
+                      </Button>
                       {island.status === "Unexplored" && (
                         <Button variant="outline" className="w-full border-treasure text-treasure hover:bg-treasure hover:text-white">
                           <Eye className="h-4 w-4 mr-2" />
@@ -282,6 +297,16 @@ const Map = () => {
           </Card>
         </div>
       </div>
+      
+      {/* Send Troops Modal */}
+      {troopsTarget && (
+        <SendTroopsModal
+          isOpen={sendTroopsModalOpen}
+          onClose={() => setSendTroopsModalOpen(false)}
+          targetName={troopsTarget.name}
+          targetCoordinates={troopsTarget.coordinates}
+        />
+      )}
     </div>
   );
 };
